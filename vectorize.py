@@ -1,23 +1,10 @@
 import gensim.downloader
 import pandas as pd
-import string
 
-STOPLIST = set("for a and of the in to so".split())
+from tokenize import tokenize
+
+
 CHUNK_SIZE = 1000
-
-
-def tokenize(l):
-
-    trans = str.maketrans("", "", string.punctuation)
-    return [
-        [
-            w.translate(trans)
-            for w in tweet.lower().split()
-            if (w not in STOPLIST and not w.startswith("@"))
-        ]
-        for tweet in l
-    ]
-    # TODO: implement bi-gram detector model
 
 
 def vectorize(l):
