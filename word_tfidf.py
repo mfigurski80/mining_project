@@ -4,7 +4,7 @@ from collections import defaultdict
 import itertools
 from gensim import models, corpora
 
-from read import read_tokens as read_tokens_from_data
+from read import read_tokens_rows as read_tokens_from_data
 
 
 def build_frequency_dict(l):

@@ -1,5 +1,6 @@
 import gensim.downloader
 import pandas as pd
+import numpy as np
 
 from to_tokens import tokenize
 
@@ -9,7 +10,7 @@ CHUNK_SIZE = 1000
 
 def vectorize(l):
     model = gensim.downloader.load("glove-twitter-25")
-    return [[list(model[token]) for token in tweet if token in model] for tweet in l]
+    return ([list(model[token]) for token in tweet if token in model] for tweet in l)
 
 
 def make_even(items, n):
@@ -31,7 +32,7 @@ if __name__ == "__main__":
     for df in df_iter:
         vecs = vectorize(tokenize(df[5]))
         #  print(get_lens(vecs))
-        vecs_df = pd.DataFrame(make_even(vecs, 30))
+        vecs_df = pd.DataFrame(make_even(list(vecs), 30))
         vecs_df.insert(0, "Sentiment", df[0])
         #  print(vecs_df)
         vecs_df.to_csv(OUT_FNAME, header=None, index=False, mode=mode)
