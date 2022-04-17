@@ -1,7 +1,7 @@
 import gensim.downloader
 import pandas as pd
 
-from tokenize import tokenize
+from to_tokens import tokenize
 
 
 CHUNK_SIZE = 1000

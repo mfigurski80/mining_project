@@ -1,6 +1,4 @@
-import pandas as pd
 import string
-
 
 STOPLIST = set("for a and of the in to so".split())
 
