@@ -13,7 +13,7 @@ def tokenize(l: list) -> list:
         [
             w.translate(trans)
             for w in tweet.lower().split()
-            if (w not in STOPLIST and not w.startswith("@"))
+            if (w not in STOPLIST and not (w.startswith("@") or w.startswith("http")))
         ]
         for tweet in l
     ]
