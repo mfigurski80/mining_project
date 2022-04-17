@@ -29,7 +29,7 @@ def apply_transformation_to_dfs(fname, gen, out_fname):
 
 
 def apply_transformation_to_token_dfs(fname, gen, out_fname):
-    apply_transformation_to_dfs(fname, lambda df: gen(tokenize(df[5])), out_fname)
+    apply_transformation_to_dfs(fname, lambda df: gen(tokenize(df[5]), df), out_fname)
 
 
 def read_word_vectorized_rows(fname):
