@@ -46,6 +46,10 @@ def read_translation_dictionary(fname):
     return corpora.Dictionary.load(fname)
 
 
+def generate_bow_with(corpora: list, dictionary: coropora.Dictionary):
+    return (dictionary.doc2bow(toks) for toks in toks_gen())
+
+
 def read_tfidf(fname):
     return model.TfidfModel.load(fname)
 
@@ -60,7 +64,7 @@ if __name__ == "__main__":
 
     d = build_translation_dictionary(toks_gen(), "./models/dictionary.model")
     print(d)
-    corpus = (d.doc2bow(toks) for toks in toks_gen())
+    corpus = generate_bow_with(toks_gen(), d)
     m = build_tfidf(corpus, "./models/word-tfidf.model")
     #  print(corpus[6])
     #  print(m[corpus[6]])
