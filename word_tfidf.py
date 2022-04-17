@@ -4,12 +4,7 @@ from collections import defaultdict
 import itertools
 from gensim import models, corpora
 
-from to_tokens import tokenize
-
-
-def read_tokens_from_data(fname):
-    df_iter = pd.read_csv(FNAME, header=None, chunksize=1000, encoding="ISO-8859-1")
-    return itertools.chain.from_iterable(tokenize(df[5]) for df in df_iter)
+from read import read_tokens as read_tokens_from_data
 
 
 def build_frequency_dict(l):
@@ -35,6 +30,7 @@ def build_translation_dictionary(toks_list, save_name=None):
 
 
 def build_tfidf(corpus, save_name=None):
+    # https://www.tutorialspoint.com/gensim/gensim_creating_a_bag_of_words_corpus.htm
     print("building tfidf")
     m = models.TfidfModel(corpus)
     if save_name:
@@ -46,12 +42,12 @@ def read_translation_dictionary(fname):
     return corpora.Dictionary.load(fname)
 
 
-def generate_bow_with(corpora: list, dictionary: coropora.Dictionary):
-    return (dictionary.doc2bow(toks) for toks in toks_gen())
+def generate_bow_with(corps: list, dictionary: corpora.Dictionary):
+    return (dictionary.doc2bow(toks) for toks in corps)
 
 
 def read_tfidf(fname):
-    return model.TfidfModel.load(fname)
+    return models.TfidfModel.load(fname)
 
 
 if __name__ == "__main__":
