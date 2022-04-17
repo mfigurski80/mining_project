@@ -39,8 +39,8 @@ def cosine_similarity(a, b):
 
 if __name__ == "__main__":
     FNAME = "./data/smol.csv"
-    #  OUT_FNAME = "./data/tweet-vectorized-smol.csv"
-    OUT_FNAME = "./test.csv"
+    OUT_FNAME = "./data/tweet-vectorized-smol.csv"
+    #  OUT_FNAME = "./test.csv"
     #  tok_list_gen = lambda: read_tokens_rows(FNAME)
     d = read_translation_dictionary("./models/dictionary.model")
     tfidf = read_tfidf("./models/word-tfidf.model")
