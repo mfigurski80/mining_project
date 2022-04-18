@@ -46,7 +46,7 @@ if __name__ == "__main__":
     tfidf = read_tfidf("./models/word-tfidf.model")
     w2v = gensim.downloader.load("glove-twitter-25")
 
-    def transform(toks):
+    def transform(toks, _):
         #  print(df)
         res = pd.DataFrame(vectorize(toks, d, tfidf, w2v))
         #  print(res)
